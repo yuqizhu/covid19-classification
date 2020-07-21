@@ -1,6 +1,5 @@
 import tensorflow as tf
 
-
 def rotate(image):
     return tf.image.rot90(image, tf.random.uniform(shape=[], minval=0, maxval=4, dtype=tf.int32))
 

@@ -2,6 +2,7 @@ import os
 from utils.applyLungThermal import applyLungThermal
 from utils.circleInflamArea import circleInflamArea
 from segmentation import segmentation
+from classification import classification
 
 if __name__ == '__main__':
     thermal_folder = './input/thermal'
@@ -21,8 +22,14 @@ if __name__ == '__main__':
         thermal_path = thermal_folder + '/' + filename
         lung_path = output_path + '/' + os.path.splitext(filename)[0] + '_lung.png'
 
-        applyLungThermal(thermal_path, mask_path, output_path, kpts_list)
+        applyLungThermal(thermal_path, mask_path, output_path + '/', kpts_list)
+        output_path = './output/circle/'
         circleInflamArea(lung_path, temp_path, output_path, temp_thresh)
+
+    cls_input_path = './output/circle'
+    cls_output_path = './output'
+    model_path = './weight/densenet.h5'
+    classification(cls_input_path, cls_output_path, model_path, batch_size=1)
 
 
 

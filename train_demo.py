@@ -10,4 +10,4 @@ if __name__ == '__main__':
     batch_size = 1
     train_path = './input/train_data'
 
-    train(model, img_width, img_height, classes, epochs, batch_size, train_path)
+    train(model, img_width, img_height, classes, epochs, batch_size, train_path, "./weight/densenet.h5")

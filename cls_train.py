@@ -83,4 +83,5 @@ def train(model, img_width, img_height, classes, epochs, batch_size, train_path,
     model.set_weights(weights)
     model.fit(train_image, epochs=epochs, callbacks=[lr_schedule],
               steps_per_epoch=STEPS_PER_EPOCH, verbose=2)
-    model.save("./weight/densenet.h5")
+    model.save(output_path)
+
